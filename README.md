@@ -21,3 +21,6 @@ The current system also does not maintain records of the medicines prescribed to
 Student rely on the health center to issue medical certificates. But these certificates are handed out as hardcopies. These copies are hard to maintain and students often struggle to produce them at the end of the semester when required.
 
 Traditional offline record maintenance methods have several limitations that can make it difficult for some patients to retrieve their previous health records. One of the main challenges is accessibility. It will be difficult for the health centre to produce these records as the current hard copies will diminish in quality over time. This can create a barrier and will hinder the patients convenience during the health checkup process.
+
+This project tackles the above problem by deploying a simple database system that can be operated through a website. The website contains basic information about the Mother Theresa Health Center along with the ability to maintain user sessions be it student, staff or admin. We used multiple web technologies such as HTML, handlebars, CSS, mongoDB, mongoose, nodeJS, expressJS and nodemon to make this website. 
+
