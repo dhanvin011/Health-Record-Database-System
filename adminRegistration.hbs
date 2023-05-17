@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Sign Up</title>
+    <!-- Bootstrap CSS -->
+<link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />    <style>
+      .signup-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 800px;
+      }
+
+      .form-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+      }
+
+      input[type="button"] {
+        width: 320px;
+        height: 35px;
+        margin-top: 20px;
+        border: none;
+        
+}
+    </style>
+  
+  </head>
+  <body>
+
+    {{>navbar4}}
+    <h1 style="padding: 10px 10px">Register New Admin</h1>
+    <div style="padding-left:250px;">
+        <form action="/adminRegistration" method="post">
+        <div class="form-column container">
+          <label for="adminid">Admin ID:</label>
+          <input type="text" class="form-control" id="adminid" name="adminid">
+          <label for="designation">Designation:</label>
+          <input type="text" class="form-control" id="designation" name="designation">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" name="email">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password">
+          <label for="cpassword">Confirm Password:</label>
+          <input type="password" class="form-control" id="cpassword" name="cpassword">
+        </div>
+      <div class="container"><input type="submit" name="submitbutton" id="" class="btn btn-lg btn-warning" style="position:relative; left:305px; margin-top:20px; padding: 0px 70px;"/>
+</div>
+
+     </form>
+</div>
+
+
+  </body>

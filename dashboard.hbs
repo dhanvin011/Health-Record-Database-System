@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+<style>.table-container {
+  height: 250px; /* set the height of the container */
+  overflow-y: scroll; /* add a scrollbar when needed */
+}</style>
+</head>
+<body>
+    {{>navbar}}
+
+	<h1 style="padding:10px 10px;">Welcome {{firstname}} {{lastname}}!</h1>
+  <div style="padding: 10px 10px;">
+    <div class="container" style="width: 80%;">
+    <div class="patient-details">
+      <h2>Patient Details</h2>
+  <div class="container">
+    <div class="row" style="padding-bottom: 5px; font-size: 20px;">
+      <div class="col-md-4"><strong>Roll No:</strong> {{rollno}}</div>
+      <div class="col-md-4"><strong>Age:</strong> {{age}}</div>
+      <div class="col-md-4"><strong>Gender:</strong> {{gender}}</div>
+    </div>
+    <div class="row" style="font-size: 20px;">
+      <div class="col-md-4"><strong>Email:</strong> {{email}}</div>
+      <div class="col-md-4"><strong>Phone:</strong> {{phone}}</div>
+      <div class="col-md-4"><strong>Blood Group:</strong> {{bloodGroup}}</div>
+    </div>
+  </div>
+	
+  <div style="padding: 10px 10px;">
+    <h2>Appointment Records</h2>
+
+    <form action="/dashboard" style="position:relative; left:150px;">
+  <label for="date" style="font-size: large;">Date:</label>
+  <input type="date" name="date" id="date">
+  <button type="submit" class="btn btn-primary btn-warning">Find</button>
+</form>
+
+<div class="container table-container">
+  {{#if appointment.length}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Appointment No.</th>
+          <th scope="col">Date</th>
+          <th scope="col">PDF File</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each appointment}}
+          <tr>
+            <td>{{ this.appointmentNo }}</td>
+            <td>{{ this.date }}</td>
+            <td><a href="/appointments.pdf?appointmentNo={{this.appointmentNo}}&date={{date}}">Download PDF</a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No appointment records found.</p>
+  {{/if}}
+</div>
+
+  </div>
+    
+  </div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+	
+</body>
+</html>

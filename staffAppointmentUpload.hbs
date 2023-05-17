@@ -1,0 +1,101 @@
+<html lang="en">
+  <head>
+    <title>Appointment Upload</title>
+    {{!-- <link rel="stylesheet" href="appointmentUpload.css"/> --}}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      form {
+  width: 80%;
+  margin: 75px auto 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="number"],
+input[type="date"],
+input[type="time"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4d90fe;
+}
+
+#appointmentNo,
+#rollNo,
+#date,
+#time,
+#symptoms,
+#diagnosis {
+  margin-bottom: 20px;
+}
+
+button[type="submit"] {
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 600px) {
+  form {
+    width: 100%;
+  }
+}
+
+    </style>
+  </head>
+<body>
+    {{>navbar3}}
+    <h1 style="padding:10px 10px">Upload Appointment Details</h1>
+  <form action="/appointmentUpload" method="post">
+  <label for="appointmentNo">Appointment Number:</label>
+  <input type="number" id="appointmentNo" name="appointmentNo" required>
+
+  <label for="rollNo">Roll Number:</label>
+  <input type="number" id="rollNo" name="rollNo" required>
+
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
+
+  <label for="time">Time:</label>
+  <input type="time" id="time" name="time" required>
+
+  <label for="symptoms">Symptoms (up to 300 characters):</label>
+  <textarea id="symptoms" name="symptoms" maxlength="300" required></textarea>
+
+  <label for="diagnosis">Diagnosis (up to 300 characters):</label>
+  <textarea id="diagnosis" name="diagnosis" maxlength="300" required></textarea>
+
+  <button type="submit" class="btn btn-lg btn-warning">Upload Record</button>
+</form>
+
+    
+</body>
+</html>

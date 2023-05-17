@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <style>.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px green
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Doctor availability text */
+#doctor-status {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.toggle-container {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  padding: 10px;
+}
+
+.switch {
+  margin-right: 10px;
+}
+
+#doctor-status {
+  margin: 0;
+}
+
+#toggle-btn:checked + .slider {
+  background-color: green;
+}
+
+#toggle-btn:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+</style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+  </head>
+  <body>
+    {{>navbar4}}
+
+    <main class="container py-4">
+      <h1 class="mb-4">Admin Dashboard</h1>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">Create Admin</div>
+            <div class="card-body">
+              <a href="/adminRegistration" class="btn btn-primary btn-warning">Create Admin</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">Register Staff</div>
+            <div class="card-body">
+              <a href="/empsignup" class="btn btn-primary btn-warning">Register Staff</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">Register Student</div>
+            <div class="card-body">
+              <a href="/signup" class="btn btn-primary btn-warning">Register Student</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">Upload Appointment</div>
+            <div class="card-body">
+              <a href="/appointmentUpload" class="btn btn-primary btn-warning">Upload Appointment</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-header">Upload Prescription</div>
+            <div class="card-body">
+              <a href="/prescriptionUpload" class="btn btn-primary btn-warning">Upload Prescription</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+
+
+
+      	<div class="container" style="width: 80%;">
+  <h2>Appointment Records</h2>
+
+  <form action="/adminDashboard" style="position:relative; left:150px; padding-bottom:10px;">
+    <label for="rollno" style="font-size: large; ">Roll No:</label>
+    <input type="number" name="rollno" id="" style="margin-right:20px;">
+    <label for="date" style="font-size: large;">Date:</label>
+    <input type="date" name="date" id="">
+    <button type="submit" class="btn btn-primary btn-warning">Find</button>
+</form>
+
+<div class="container" style="height: 300px; overflow: scroll;">
+  {{#if appointment.length}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Appointment No.</th>
+          <th scope="col">Roll No</th>
+          <th scope="col">Date</th>
+          <th scope="col">PDF File</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each appointment}}
+          {{#if ../rollno}}
+            {{#if ../date}}
+              {{#if (and (eq this.rollNo ../rollno) (eq this.date ../date))}}
+                <tr>
+                  <td>{{ this.appointmentNo }}</td>
+                  <td>{{ this.rollNo }}</td>
+                  <td>{{ this.date }}</td>
+                  <td><a href="/appointments.pdf?appointmentNo={{this.appointmentNo}}">Download PDF</a></td>
+                </tr>
+              {{/if}}
+            {{else}}
+              {{#if (eq this.rollNo ../rollno)}}
+                <tr>
+                  <td>{{ this.appointmentNo }}</td>
+                  <td>{{ this.rollNo }}</td>
+                  <td>{{ this.date }}</td>
+                  <td><a href="/appointments.pdf?appointmentNo={{this.appointmentNo}}">Download PDF</a></td>
+                </tr>
+              {{/if}}
+            {{/if}}
+          {{else}}
+            {{#if ../date}}
+              {{#if (eq this.date ../date)}}
+                <tr>
+                  <td>{{ this.appointmentNo }}</td>
+                  <td>{{ this.rollNo }}</td>
+                  <td>{{ this.date }}</td>
+                  <td><a href="/appointments.pdf?appointmentNo={{this.appointmentNo}}">Download PDF</a></td>
+                </tr>
+              {{/if}}
+            {{else}}
+              <tr>
+                <td>{{ this.appointmentNo }}</td>
+                <td>{{ this.rollNo }}</td>
+                <td>{{ this.date }}</td>
+                <td><a href="/appointments.pdf?appointmentNo={{this.appointmentNo}}">Download PDF</a></td>
+              </tr>
+            {{/if}}
+          {{/if}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No appointment records found.</p>
+  {{/if}}
+</div>
+
+</div>
+
+
+<div class="container" style="width: 80%;" >
+  <h2 class="mb-3" style="padding-top: 30px;">Prescription Records</h2>
+  
+  <div class="table-wrapper" style="height: 300px; overflow: scroll;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Prescription No.</th>
+          <th scope="col">Appointment No.</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each prescription}}
+        <tr>
+          <td>{{ this.prescriptionNo }}</td>  
+          <td>{{ this.appointmentNo }}</td>
+          <td>{{ this.date }}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-9alC2pqM2c3OjqPoiB0pFPZiJwEWwAKhWjnnHJvot/vQDwZbptjtwWKTGJf5/5X"
+      crossorigin="anonymous"
+    ></script>
+
+    
+  </body>
+</html>

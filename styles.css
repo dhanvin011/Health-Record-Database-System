@@ -1,0 +1,108 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.lands {
+  color: black;
+}
+
+.headerbar {
+  padding-top: 20px;
+  padding-bottom: 35px;
+  background-color: aqua;
+}
+
+#header {
+  background-color: #6495ed;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.row {
+  padding-left: 20px;
+}
+
+.h-button {
+  margin: 20px 20px;
+}
+
+#doctor {
+  width: 250px;
+}
+
+section {
+  flex-basis: 30%;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: white;
+}
+.container {
+  display: flex;
+  align-items: left;
+}
+
+.descriptionD {
+  margin: 10px;
+  padding: 20px;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+h2 {
+  margin-top: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.card {
+  margin: 20px 20px;
+}
+
+footer {
+  background-color: #ddd;
+  padding: 20px;
+  text-align: center;
+}
